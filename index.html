@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A little something to brighten your day</title>
+<meta name="color-scheme" content="light dark">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- floating hearts / teddies / sparkles, filled by JS -->
+  <div class="bg-decor" id="bgDecor" aria-hidden="true"></div>
+
+  <!-- top progress bar -->
+  <div class="progress-wrap" aria-hidden="true">
+    <div class="progress-bar" id="progressBar"></div>
+  </div>
+
+  <!-- tiny easter-egg heart, tap 5 times -->
+  <button class="easter-heart" id="easterHeart" aria-label="a tiny heart" type="button">💗</button>
+
+  <main id="app">
+
+    <!-- 1. GATE -->
+    <section class="screen is-active" id="screen-gate" data-screen="gate">
+      <div class="card gate-card">
+        <div class="gate-seal" id="gateSeal">💌</div>
+        <p class="eyebrow" id="gateFrom">From your boyfriend Lee…</p>
+        <h1 id="gateHeadline">I made you something</h1>
+        <p class="muted" id="gateSub">No pressure. Just open it when you're ready.</p>
+        <button class="btn btn-primary" id="gateOpenBtn" type="button">Open me if you miss Lee 🥺</button>
+      </div>
+    </section>
+
+    <!-- 2. MOOD CHECK -->
+    <section class="screen" id="screen-mood" data-screen="mood">
+      <div class="card">
+        <h2 id="moodQuestion">How's today treating you?</h2>
+        <div class="mood-face" id="moodFace">😩</div>
+        <p class="mood-label" id="moodLabel">Rough one 😩</p>
+        <input type="range" min="0" max="100" value="12" id="moodSlider" class="slider" aria-label="How's today treating you">
+        <button class="btn btn-primary" id="moodContinueBtn" type="button">Okay... keep going</button>
+      </div>
+    </section>
+
+    <!-- 3. APOLOGY -->
+    <section class="screen" id="screen-apology" data-screen="apology">
+      <div class="card">
+        <h2>Just so you know</h2>
+        <p class="apology-text" id="apologyText"></p>
+        <p class="muted apology-hint" id="apologyHint"></p>
+        <p class="apology-footer" id="apologyFooter"></p>
+        <button class="btn btn-primary is-hidden" id="apologyContinueBtn" type="button">Keep going</button>
+      </div>
+    </section>
+
+    <!-- 4. QUESTIONS (rendered by JS) -->
+    <section class="screen" id="screen-questions" data-screen="questions">
+      <div class="card" id="questionCard"></div>
+    </section>
+
+    <!-- 5. HUG MACHINE -->
+    <section class="screen" id="screen-hug" data-screen="hug">
+      <div class="card hug-card">
+        <h2>The Hug Machine™</h2>
+        <p class="hug-count" id="hugCount">You've given Lee 0 hugs 🥺</p>
+        <button class="hug-btn" id="hugBtn" type="button" aria-label="Tap for a hug">🤗</button>
+        <p class="hug-message" id="hugMessage" aria-live="polite"></p>
+        <button class="btn btn-primary" id="hugContinueBtn" type="button">Onward</button>
+      </div>
+    </section>
+
+    <!-- 6. GIFTS -->
+    <section class="screen" id="screen-gifts" data-screen="gifts">
+      <div class="card">
+        <h2>Pick a box, any box</h2>
+        <p class="muted">You can open all three, no rush, they are all yours.</p>
+        <div class="gift-row" id="giftRow"></div>
+        <button class="btn btn-primary" id="giftContinueBtn" type="button">To the end</button>
+      </div>
+    </section>
+
+    <!-- 7. FINALE -->
+    <section class="screen" id="screen-finale" data-screen="finale">
+      <div class="card finale-card">
+        <h2 id="finaleHeading">That's everything</h2>
+        <p id="finaleMessage"></p>
+        <img id="finalePhoto" class="finale-photo is-hidden" alt="A photo of the two of us">
+        <div class="finale-actions">
+          <button class="btn btn-primary" id="sendAnswersBtn" type="button">Send my answers to Lee 💌</button>
+          <button class="btn btn-secondary" id="needTimeBtn" type="button">I need a little more time 🤍</button>
+        </div>
+        <p class="finale-footnote">Either button is okay. Both just let him know you got this.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- easter egg note -->
+  <div class="modal is-hidden" id="easterModal">
+    <div class="modal-card">
+      <p id="easterNoteText"></p>
+      <button class="btn btn-primary" id="easterCloseBtn" type="button">Close</button>
+    </div>
+  </div>
+
+  <!-- confetti for the finale -->
+  <div class="confetti-layer" id="confettiLayer" aria-hidden="true"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
